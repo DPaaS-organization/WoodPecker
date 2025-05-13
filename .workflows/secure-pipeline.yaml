@@ -1,0 +1,18 @@
+name: Secure Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  secure-build:
+    uses: DPaaS-organization/DPaaS-Admin-Repo/.github/workflows/secure-build.yaml@main
+    secrets:
+      DTRACK_API_KEY: ${{ secrets.DEPENDENCY_TRACK_API_KEY }}
+      ADMIN_ACCESS_TOKEN: ${{ secrets.ADMIN_ACCESS_TOKEN }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
